@@ -1,0 +1,106 @@
+@baseUrl = http://localhost:5121
+
+### Obtener token CSRF
+# @name csrf
+GET {{baseUrl}}/api/csrf/token
+
+### Login
+# @name login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "nombreUsuario": "admin",
+  "password": "Admin123!"
+}
+
+### Estado de sesión
+GET {{baseUrl}}/api/auth/status
+
+### Listar usuarios
+GET {{baseUrl}}/api/usuarios
+
+### Crear usuario
+POST {{baseUrl}}/api/usuarios
+Content-Type: application/json
+X-XSRF-TOKEN: {{csrf.response.body.token}}
+
+{
+  "nombreUsuario": "nuevo.usuario",
+  "password": "Password1!",
+  "rol": "Usuario",
+  "activo": true
+}
+
+### Actualizar usuario
+PUT {{baseUrl}}/api/usuarios/2
+Content-Type: application/json
+X-XSRF-TOKEN: {{csrf.response.body.token}}
+
+{
+  "nombreUsuario": "maria.garcia",
+  "password": "",
+  "rol": "Usuario",
+  "activo": true
+}
+
+### Eliminar usuario
+DELETE {{baseUrl}}/api/usuarios/6
+X-XSRF-TOKEN: {{csrf.response.body.token}}
+
+### Listar películas (incluye reparto)
+GET {{baseUrl}}/api/peliculas
+
+### Crear película
+POST {{baseUrl}}/api/peliculas
+Content-Type: application/json
+X-XSRF-TOKEN: {{csrf.response.body.token}}
+
+{
+  "titulo": "Interstellar",
+  "genero": "Ciencia ficción",
+  "anio": 2014,
+  "director": "Christopher Nolan"
+}
+
+### Asignar un actor al reparto de una película
+POST {{baseUrl}}/api/peliculas/1/reparto
+Content-Type: application/json
+X-XSRF-TOKEN: {{csrf.response.body.token}}
+
+{
+  "actorId": 1,
+  "personaje": "Cooper"
+}
+
+### Quitar un actor del reparto
+DELETE {{baseUrl}}/api/peliculas/1/reparto/1
+X-XSRF-TOKEN: {{csrf.response.body.token}}
+
+### Listar actores (incluye sus películas)
+GET {{baseUrl}}/api/actores
+
+### Crear actor
+POST {{baseUrl}}/api/actores
+Content-Type: application/json
+X-XSRF-TOKEN: {{csrf.response.body.token}}
+
+{
+  "nombre": "Anne",
+  "apellido": "Hathaway",
+  "fechaNacimiento": "1982-11-12",
+  "nacionalidad": "Estadounidense"
+}
+
+### Logout
+POST {{baseUrl}}/api/auth/logout
+X-XSRF-TOKEN: {{csrf.response.body.token}}
+
+### Login con credenciales inválidas (401)
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "nombreUsuario": "admin",
+  "password": "incorrecta"
+}

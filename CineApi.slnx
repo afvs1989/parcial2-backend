@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CineApi.Api/CineApi.Api.csproj" />
+    <Project Path="src/CineApi.Application/CineApi.Application.csproj" />
+    <Project Path="src/CineApi.Domain/CineApi.Domain.csproj" />
+    <Project Path="src/CineApi.Infrastructure/CineApi.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CineApi.Tests/CineApi.Tests.csproj" />
+  </Folder>
+</Solution>

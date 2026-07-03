@@ -1,0 +1,55 @@
+## Build results
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+
+## Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.DotSettings.user
+
+## NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Entity Framework
+*.db
+*.db-shm
+*.db-wsdl
+
+## Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+
+## ASP.NET / secrets
+appsettings.*.local.json
+appsettings.Local.json
+secrets.json
+*.pfx
+*.publishsettings
+
+## OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+## Misc
+*.swp
+*~
+*.cache
